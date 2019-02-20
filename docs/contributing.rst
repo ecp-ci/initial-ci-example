@@ -4,12 +4,11 @@ Contributing
 ============
 
 The TrainingCi4Ecp site is using
-
 `Sphinx <http://www.sphinx-doc.org/en/stable/tutorial.html>`_ for
 documentation.
 
 If you have `Sphinx <http://www.sphinx-doc.org/en/stable/tutorial.html>`_ You can
-build the html manual locally using the command::
+build the documentation site locally using the command::
 
     sphinx-build -b html . _build -a
 
