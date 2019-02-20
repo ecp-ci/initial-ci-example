@@ -271,4 +271,3 @@ there for `:math:`. Also, this
 has a lot of useful information on various math symbols available in LaTeX
 and `this wiki book <https://en.wikibooks.org/wiki/LaTeX/Mathematics>`_ has
 a lot of guidance on constructing math equations with LaTeX.
-
