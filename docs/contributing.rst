@@ -92,9 +92,6 @@ Quick Reference
 * Bracket word(s) with one star (``*word*``) for *italics*.
 * Bracket word(s) with two backticks (:samp:`\ ``some words```) for ``literal``.
 * Bracketed word(s) should not span line breaks.
-* Use **bold** to refer to Ci4Ecp_ **Widget** names, **Operator** or **Plot**
-  names and other named objects part of Ci4Ecp_'s interface.
-* Avoid use of **bold** for other purposes. Instead use *italics*.
 * Use ``literals`` for code, commands, arguments, file names, etc.
 * Use :samp:`\ :t\ erm:`glossary term`` at least for the *first* use of a
   glossary term in a section.
