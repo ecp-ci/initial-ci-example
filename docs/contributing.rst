@@ -1,10 +1,9 @@
-.. _Contributing:
-
 Contributing
 ============
 
 The TrainingCi4Ecp site is using
-`Sphinx <http://www.sphinx-doc.org/en/stable/tutorial.html>`_ for
+`reStructuredText (rst) <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_
+and `Sphinx <http://www.sphinx-doc.org/en/stable/tutorial.html>`_ for
 documentation.
 
 If you have `Sphinx <http://www.sphinx-doc.org/en/stable/tutorial.html>`_ You can
@@ -16,7 +15,9 @@ You can then browse the root of the manual by pointing your browser to
 :file:`./_build/index.html`.  The ``-a`` forces a re-build of everything.
 Remove it when you are constantly revising and rebuilding.
 
-Your changes to any files in :file:`docs` will go live
+On the other hand, if you really don't wanna be bothered with setting up Sphinx to run
+locally on your system, you can push commits to GitHub and let GitHub and ReadTheDocs
+regenerate the docs. Just be aware that your changes to any files in :file:`docs` will go live
 `here <http://visit-sphinx-user-manual.readthedocs.io/en/latest/index.html>`_
 shortly after you push your commits to GitHub. GitHub uses ReadTheDocs to
 build the documentation pages from the Restructured Text, ``.rst`` sources.
@@ -24,9 +25,10 @@ build the documentation pages from the Restructured Text, ``.rst`` sources.
 Quick Reference
 ---------------
 
-* A few documents about reStructuredText and Sphinx are useful:
+* A few documents about reStructuredText and Sphinx are useful
 
   * `reStructuredText Primer <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`_
+    (or `this one <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_)
   * `Sphinx Documentation <http://www.sphinx-doc.org/en/stable/contents.html>`_
   * `reStructuredText Markup Specification <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html>`_
   * `reStructuredText Reference Documentation <http://docutils.sourceforge.net/rst.html#reference-documentation>`_
