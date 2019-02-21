@@ -264,9 +264,7 @@ produces...
 
 :math:`x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}`
 
-You can find a few examples in :ref:`Expressions <Expressions>`. Search
-there for `:math:`. Also, this
-`LaTeX Wiki page <https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols>`_
+This `LaTeX Wiki page <https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols>`_
 has a lot of useful information on various math symbols available in LaTeX
 and `this wiki book <https://en.wikibooks.org/wiki/LaTeX/Mathematics>`_ has
 a lot of guidance on constructing math equations with LaTeX.
