@@ -240,11 +240,9 @@ caption.
 
 Tables
 ------
-Sphinx supports a variety of mechanisms for defining tables. The conversion
-tool used to convert this documentation from its original OpenOffice format
-converted all tables to the *grid* style of table which is kinda sorta like
-ascii art. Large tables can result in individual lines that span many widths of
-the editor window. It is cumbersome to deal with but rich in capabilities.
+
+Have a look a `Sphinx tables <http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#tables>`_
+Sometimes, a `field list <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html?highlight=definition%20list#field-lists>`_ is better.
 
 .. _contributing_math:
 
