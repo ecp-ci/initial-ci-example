@@ -133,10 +133,10 @@ Quick Reference
     Link to anchors *within* this documentation like :ref:`this one <my_anchor>`
 
 * Link to other documents elsewhere online like
-  `visitusers.org <https://www.visitusers.org/>`_::
+  Ci4Ecp_ `Thrust 3 Confluence Page <https://confluence.exascaleproject.org/pages/resumedraft.action?draftId=60196128&draftShareId=d95db38f-f095-4bf1-b9d7-9ce1e38453c3>`_::
 
     Link to other documents elsewhere online like
-    `visitusers.org <https://www.visitusers.org/>`_
+    Ci4Ecp_ `Thrust 3 Confluence Page <https://confluence.exascaleproject.org/pages/resumedraft.action?draftId=60196128&draftShareId=d95db38f-f095-4bf1-b9d7-9ce1e38453c3>`_
 
 * Link to *numbered* figures or tables *within* this documentation like
   :numref:`Fig. %s <my_figure2>`::
