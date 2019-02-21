@@ -263,6 +263,8 @@ latex_elements = {
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
 
+numfig = True
+
 # short-cut links for common/important cases
 rst_epilog = """
 .. _BLT: https://computation.llnl.gov/projects/blt-build-link-test
