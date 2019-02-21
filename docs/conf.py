@@ -32,7 +32,8 @@ import os
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.todo',
-    'sphinx.ext.viewcode'
+    'sphinx.ext.viewcode',
+    'sphinx.ext.mathjax'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -267,4 +268,5 @@ rst_epilog = """
 .. _BLT: https://computation.llnl.gov/projects/blt-build-link-test
 .. _MIF: https://www.hdfgroup.org/2017/03/mif-parallel-io-with-hdf5
 .. _HDF5: https://www.hdfgroup.org/downloads/hdf5 
+.. _Ci4Ecp: https://www.exascaleproject.org/project/continuous-integration-testing-release
 """

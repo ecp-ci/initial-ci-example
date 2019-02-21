@@ -60,11 +60,10 @@ Quick Reference
 
   yields these headings...
 
-.. figure:: images/headings.png
+.. figure:: files/headings.png
 
 * If you want to divide sections and subsections across multiple ``.rst``
-  files, you can link them together using the ``.. toctree::`` directive
-  as is done for example in the section on VisIt_ **Plots** ::
+  files, you can link them together using the ``.. toctree::`` directive::
 
     Examples 
     ========
@@ -84,15 +83,15 @@ Quick Reference
 * Wherever possible, keep lines in ``.rst`` files to 80 columns or less.
 * Avoid contractions such as ``isn't``, ``can't`` and ``you've``.
 * Avoid hyphenation of words.
-* Use ``VisIt_`` or ``VisIt_'s`` when referring to VisIt_ by name.
+* Use ``Ci4Ecp_`` or ``Ci4Ecp_'s`` when referring to Ci4Ecp_ by name.
 * Use upper case for all letters in acronyms (:abbr:`MPI (Message Passing Interface)`, VTK)
 * Use case conventions of product names (QuickTime, TotalView, Valgrind).
 * Bracket word(s) with two stars (``**some words**``) for **bold**.
 * Bracket word(s) with one star (``*word*``) for *italics*.
 * Bracket word(s) with two backticks (:samp:`\ ``some words```) for ``literal``.
 * Bracketed word(s) should not span line breaks.
-* Use **bold** to refer to VisIt_ **Widget** names, **Operator** or **Plot**
-  names and other named objects part of VisIt_'s interface.
+* Use **bold** to refer to Ci4Ecp_ **Widget** names, **Operator** or **Plot**
+  names and other named objects part of Ci4Ecp_'s interface.
 * Avoid use of **bold** for other purposes. Instead use *italics*.
 * Use ``literals`` for code, commands, arguments, file names, etc.
 * Use :samp:`\ :t\ erm:`glossary term`` at least for the *first* use of a
@@ -146,10 +145,10 @@ Quick Reference
     :numref:`Fig. %s <my_figure2>`
 
 * Link to a downloadable file *within* this documentation like
-  :download:`this one <../Quantitative/VerdictManual-revA.pdf>`::
+  :download:`this one <./files/test.pdf>`::
 
     Link to a downloadable file *within* this documentation like
-    :download:`this one <../Quantitative/VerdictManual-revA.pdf>`
+    :download:`this one <./files/test.pdf>`
 
 .. _contributing_images:
 
@@ -179,18 +178,18 @@ An ordinary image...
 
 .. code-block:: RST
 
-  .. figure:: images/array_compose_with_bins.png
+  .. figure:: files/array_compose_with_bins.png
 
-.. figure:: images/array_compose_with_bins.png
+.. figure:: files/array_compose_with_bins.png
 
 Same image with ``:scale: 50%`` option
 
 .. code-block:: RST
 
-  .. figure:: images/array_compose_with_bins.png
+  .. figure:: files/array_compose_with_bins.png
      :scale: 50% 
 
-.. figure:: images/array_compose_with_bins.png
+.. figure:: files/array_compose_with_bins.png
    :scale: 50% 
 
 Same image with an anchor for cross referencing...
@@ -199,12 +198,12 @@ Same image with an anchor for cross referencing...
 
   .. _my_figure:
 
-  .. figure:: images/array_compose_with_bins.png
+  .. figure:: files/array_compose_with_bins.png
      :scale: 50% 
 
 .. _my_figure:
 
-.. figure:: images/array_compose_with_bins.png
+.. figure:: files/array_compose_with_bins.png
    :scale: 50% 
 
 which can now be cross referenced using an inline :numref:`Fig. %s <my_figure>` 
@@ -224,14 +223,14 @@ a caption.
 
   .. _my_figure2:
 
-  .. figure:: images/array_compose_with_bins.png
+  .. figure:: files/array_compose_with_bins.png
      :scale: 50% 
 
      Here is a caption for the figure.
 
 .. _my_figure2:
 
-.. figure:: images/array_compose_with_bins.png
+.. figure:: files/array_compose_with_bins.png
    :scale: 50% 
 
    Here is a caption for the figure.
