@@ -1,6 +1,7 @@
 # TrainingCi4Ecp
 
 [![Build Status](https://travis-ci.org/betterscientificsoftware/TrainingCi4Ecp.svg?branch=master)](https://travis-ci.org/betterscientificsoftware/TrainingCi4Ecp)
+[![Documentation Status](https://readthedocs.org/projects/trainingci4ecp/badge/?version=master)](https://trainingci4ecp.readthedocs.io/en/master/?badge=master)
 
 A training site for working examples, documentation and use of ECP, complex-wide, continuous integration resources.
 
