@@ -84,7 +84,7 @@ script:
   - cd ${TRAVIS_BUILD_DIR}
   - mkdir -p test-src/calc_pi
   - cd test-src/calc_pi
-  - cmake ${CMAKE_OPTS} ../src/calc_pi
+  - cmake ${CMAKE_OPTS} ../../src/calc_pi
   - make
   - env CTEST_OUTPUT_ON_FAILURE=1 make test
   - make install
