@@ -1,0 +1,97 @@
+sudo: false
+
+language: cpp
+compiler:
+  - gcc
+env:
+  global:
+    # we need to know the root dir for our 3rd party lib installs
+    - TRAVIS_HOME=`pwd`/..
+    - TRAVIS_TPLS_DIR=${TRAVIS_HOME}/tpls
+    - CMAKE_MAJOR=3.8
+    - CMAKE_MINOR=0
+    - BLT_CC=gcc-4.9
+    - BLT_CXX=g++-4.9
+    - BLT_FC=gfortran-4.9
+    - BLT_FORTRAN=ON
+    - BLT_OPENMP=ON
+    - BLT_GTEST=ON
+    - BLT_FRUIT=ON
+    - BLT_GMOCK=OFF
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+       - gcc-4.9
+       - g++-4.9
+       - gfortran-4.9
+       - mpich2
+       - libmpich2-dev
+before_install:
+  # workaround apt related for error:
+  # Err:6 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu trusty InRelease
+  # The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 1E9377A2BA9EF27F
+  - sudo apt update -o Acquire::Retries=100 -o Acquire::http::Timeout="60" -o Acquire::AllowInsecureRepositories=true -o Acquire::AllowDowngradeToInsecureRepositories=true
+
+  # download the ver of cmake we want to test
+  - wget --no-check-certificate http://www.cmake.org/files/v${CMAKE_MAJOR}/cmake-${CMAKE_MAJOR}.${CMAKE_MINOR}-Linux-x86_64.sh
+install:
+  # install cmake
+  - mkdir -p ${TRAVIS_TPLS_DIR}/cmake/
+  - sh cmake-${CMAKE_MAJOR}.${CMAKE_MINOR}-Linux-x86_64.sh --skip-license --prefix=${TRAVIS_TPLS_DIR}/cmake/
+  - export PATH=${TRAVIS_TPLS_DIR}/cmake/bin:$PATH
+script:
+  - BLT_SOURCE_DIR=${TRAVIS_BUILD_DIR}/blt/master_20Feb19
+  # point to blt
+  - CMAKE_OPTS="-DBLT_SOURCE_DIR=${BLT_SOURCE_DIR}"
+  # build type and install loc
+  - CMAKE_OPTS="${CMAKE_OPTS} -DCMAKE_BUILD_TYPE=Debug"
+  - CMAKE_OPTS="${CMAKE_OPTS} -DCMAKE_INSTALL_PREFIX=../travis-debug-install"
+  # c & c++ compilers
+  - CMAKE_OPTS="${CMAKE_OPTS} -DCMAKE_C_COMPILER=${BLT_CC}"
+  - CMAKE_OPTS="${CMAKE_OPTS} -DCMAKE_CXX_COMPILER=${BLT_CXX}"
+  # gtest support
+  - CMAKE_OPTS="${CMAKE_OPTS} -DENABLE_GTEST=${BLT_GTEST}"
+  # gmock support
+  - CMAKE_OPTS="${CMAKE_OPTS} -DENABLE_GMOCK=${BLT_GMOCK}"
+  # fruit support
+  - CMAKE_OPTS="${CMAKE_OPTS} -DENABLE_FRUIT=${BLT_FRUIT}"
+  # benchmarking
+  - CMAKE_OPTS="${CMAKE_OPTS} -DENABLE_BENCHMARKS=ON"
+  # enable fortran support
+  - CMAKE_OPTS="${CMAKE_OPTS} -DENABLE_FORTRAN=${BLT_FORTRAN}"
+  - CMAKE_OPTS="${CMAKE_OPTS} -DCMAKE_Fortran_COMPILER=${BLT_FC}"
+  # openmp support
+  - CMAKE_OPTS="${CMAKE_OPTS} -DENABLE_OPENMP=${BLT_OPENMP}"
+  # mpi support
+  - CMAKE_OPTS="${CMAKE_OPTS} -DENABLE_MPI=ON"
+  - CMAKE_OPTS="${CMAKE_OPTS} -DMPI_C_COMPILER=mpicc"
+  - CMAKE_OPTS="${CMAKE_OPTS} -DMPI_CXX_COMPILER=mpicc"
+  - CMAKE_OPTS="${CMAKE_OPTS} -DMPI_Fortran_COMPILER=mpif90"
+  # test git macros
+  - CMAKE_OPTS="${CMAKE_OPTS} -DTEST_GIT_MACROS=ON"
+  #########################################################
+  #########################################################
+  #  tests
+  #########################################################
+  #########################################################
+  # override prev gtest setting, these projects req gtest
+  - CMAKE_OPTS="${CMAKE_OPTS} -DENABLE_GTEST=ON"
+  #########################################################
+  # test src/calc_pi
+  #########################################################
+  - cd ${TRAVIS_BUILD_DIR}
+  - mkdir -p test-src/calc_pi
+  - cd test-src/calc_pi
+  - cmake ${CMAKE_OPTS} ../src/calc_pi
+  - make
+  - env CTEST_OUTPUT_ON_FAILURE=1 make test
+  - make install
+  
+notifications:
+  email:
+    recipients:
+      - miller86@llnl.gov
+    on_success: always
+    on_failure: always
