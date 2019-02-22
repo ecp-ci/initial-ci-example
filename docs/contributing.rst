@@ -1,7 +1,8 @@
 Contributing
 ============
 
-The TrainingCi4Ecp site is using
+The TrainingCi4Ecp site is using BLT_ for configure, building and testing 
+functionality and
 `reStructuredText (rst) <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_
 and `Sphinx <http://www.sphinx-doc.org/en/stable/tutorial.html>`_ for
 documentation.
