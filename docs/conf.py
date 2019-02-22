@@ -271,4 +271,5 @@ rst_epilog = """
 .. _MIF: https://www.hdfgroup.org/2017/03/mif-parallel-io-with-hdf5
 .. _HDF5: https://www.hdfgroup.org/downloads/hdf5 
 .. _Ci4Ecp: https://www.exascaleproject.org/project/continuous-integration-testing-release
+.. _ECP: https://www.exascaleproject.org
 """

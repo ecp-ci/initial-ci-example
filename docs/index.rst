@@ -5,6 +5,7 @@ Welcome to TrainingCi4Ecp Documentation
    :maxdepth: 2
    :caption: Contents:
 
+   access.rst
    contributing.rst
 
 * :ref:`genindex`
