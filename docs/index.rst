@@ -5,6 +5,7 @@ Welcome to TrainingCi4Ecp Documentation
    :maxdepth: 2
    :caption: Contents:
 
+   gitlab_ci.rst
    access.rst
    contributing.rst
 

@@ -272,4 +272,6 @@ rst_epilog = """
 .. _HDF5: https://www.hdfgroup.org/downloads/hdf5 
 .. _Ci4Ecp: https://www.exascaleproject.org/project/continuous-integration-testing-release
 .. _ECP: https://www.exascaleproject.org
+.. _GitLab: https://about.gitlab.com
+.. _GitHub: https://github.com
 """

@@ -8,6 +8,23 @@ of `GitLab <https://docs.gitlab.com>`_.
 
 Each site that offers CI resources to ECP_ projects does so via a local GitLab instance.
 
-Within the context of GitLab, the notion of a `runner <https://docs.gitlab.com/runner/>`_ is a fundamental
-aspect of the design. A *runner* is responsible for actually running the jobs that perform CI related
-operations.
+.. list-table:: GitLab Instances:
+
+   * - Site
+     - GitLab Host URL
+     - Local POC
+   * - LLNL
+     - https://lc.llnl.gov/gitlab
+     - O'Neill, Neil J. <oneill3@llnl.gov>
+   * - ORNL
+     - https://code.ornl.gov
+     - Ginsburg, Noah M. <ginsburgnm@ornl.gov>
+   * - NERSC
+     - https://software.nersc.gov
+     - * Georg Rath <gbrath@lbl.gov>
+       * Mario Melara <mamelara@lbl.gov>
+   * - OSTI
+     - https://ecp.osti.gov/
+     - * Davis, Lynn <DavisL@osti.gov>
+       * dmont@lanl.gov <dmont@lanl.gov>
+       * Lance Vowell <vowelll@osti.gov>
