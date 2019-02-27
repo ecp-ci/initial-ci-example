@@ -1,30 +1,24 @@
 Getting Access To ECP_ CI Systems
 =================================
 
-`What is Continuous Integration (CI) testing? <https://bssw.io/items/what-is-continuous-integration-testing>`_
+Each site that offers CI resources to ECP_ projects does so via a local GitLab_ instance.
+One of the steps involved in gaining access to ECP_ CI resources at other sites is to 
+get an account on that site's GitLab_ ECP_ CI instance.
 
-ECP_'s CI resources are based upon `CI functionality <https://about.gitlab.com/product/continuous-integration>`_
-of `GitLab <https://docs.gitlab.com>`_.
-
-Each site that offers CI resources to ECP_ projects does so via a local GitLab instance.
-
-.. list-table:: GitLab Instances:
+.. list-table:: GitLab Instances
 
    * - Site
      - GitLab Host URL
      - Local POC
    * - LLNL
      - https://lc.llnl.gov/gitlab
-     - O'Neill, Neil J. <oneill3@llnl.gov>
-   * - ORNL
-     - https://code.ornl.gov
-     - Ginsburg, Noah M. <ginsburgnm@ornl.gov>
+     - `Neil O'Neill <oneill3@llnl.gov>`_
    * - NERSC
      - https://software.nersc.gov
-     - * Georg Rath <gbrath@lbl.gov>
-       * Mario Melara <mamelara@lbl.gov>
+     - `Georg Rath <gbrath@lbl.gov>`_
+   * - ORNL
+     - https://code.ornl.gov
+     - `Noah Ginsburg <ginsburgnm@ornl.gov>`_
    * - OSTI
-     - https://ecp.osti.gov/
-     - * Davis, Lynn <DavisL@osti.gov>
-       * dmont@lanl.gov <dmont@lanl.gov>
-       * Lance Vowell <vowelll@osti.gov>
+     - https://ecp.osti.gov
+     - `Lance Vowell <vowelll@osti.gov>`_

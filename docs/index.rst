@@ -7,6 +7,7 @@ Welcome to TrainingCi4Ecp Documentation
 
    gitlab_ci.rst
    access.rst
+   llnl_gitlab.rst
    contributing.rst
 
 * :ref:`genindex`
