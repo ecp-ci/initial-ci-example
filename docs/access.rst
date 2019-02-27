@@ -5,7 +5,7 @@ Each site that offers CI resources to ECP_ projects does so via a local GitLab_ 
 One of the steps involved in gaining access to ECP_ CI resources at other sites is to 
 get an account on that site's GitLab_ ECP_ CI instance.
 
-.. list-table:: GitLab Instances
+.. list-table:: GitLab_ Entry Points to ECP_ CI Resources
 
    * - Site
      - GitLab Host URL
