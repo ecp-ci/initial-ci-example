@@ -241,8 +241,57 @@ caption.
 Tables
 ------
 
-Have a look a `Sphinx tables <http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#tables>`_
-Sometimes, a `field list <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html?highlight=definition%20list#field-lists>`_ is better.
+Have a look a `Sphinx tables <http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#tables>`_.
+Sometimes, for a simple two-column table, a
+`definition list <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#definition-lists`_ may be
+a better option than an outright table. If you have to create a table, a
+`list table <http://docutils.sourceforge.net/docs/ref/rst/directives.html#list-table>`_ is probably easiest...
+
+.. code-block:: RST
+
+  .. list-table:: Frozen Delights!
+     :widths: 15 10 30
+     :header-rows: 1
+
+     * - Treat
+       - Quantity
+       - Description
+     * - Albatross
+       - 2.99
+       - On a stick!
+     * - Crunchy Frog
+       - 1.49
+       - If we took the bones out, it wouldn't be
+         crunchy, now would it?
+     * - Gannet Ripple
+       - 1.99
+       - * In a blanket
+         * On a stick
+         * Sliced
+
+produces...
+
+.. list-table:: Frozen Delights!
+   :widths: 15 10 30
+   :header-rows: 1
+
+   * - Treat
+     - Quantity
+     - Description
+   * - Albatross
+     - 2.99
+     - On a stick!
+   * - Crunchy Frog
+     - 1.49
+     - If we took the bones out, it wouldn't be
+       crunchy, now would it?
+   * - Gannet Ripple
+     - 1.99
+     - * In a blanket
+       * On a stick
+       * Sliced
+
+Note how the description in the 3rd row is formatted as an RST bulleted list.
 
 .. _contributing_math:
 
