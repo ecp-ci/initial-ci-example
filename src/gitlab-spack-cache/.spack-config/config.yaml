@@ -1,0 +1,3 @@
+config:
+  install_tree: $PWD/spack-install
+  install_path_scheme: gitlab-example/${ARCHITECTURE}/${PACKAGE}-${VERSION}

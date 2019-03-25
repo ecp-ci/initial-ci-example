@@ -1,0 +1,96 @@
+################################################################################
+# GitLab CI example
+#
+# Goal: introduce a simple two stage pipeline that builds & tests a program
+# For more detailes on any of the keywords used here, additonal documetion,
+# and more information please refer to GitLab's documentation:
+# https://docs.gitlab.com/ee/ci/yaml/
+# In addition to the basic GitLab specific functioanlity, elements of the
+# Batch runner will also be introduced.
+################################################################################
+
+# Variables are a key concept of GitLab CI as each job within a pipeline is 
+# provided a prepared build environment that incorporates predefined variables
+# along with user-defined ones (project-level variable, SCHEDULER_PARAMETERS below)
+variables:
+  # SCHEDULER_PARAMETERS is a batch runner specific variable that is used for
+  # defining arguments that will be used when submitting a job to the appropriate
+  # scheduling system. For example, the below variable with Slurm will be:
+  #     sbatch --nodes=1 --partition=ecp-p9-2v100 --???
+  # Please note that the runner automatically manages several options in order
+  # to facilitate the job.
+  SCHEDULER_PARAMETERS: "--nodes=1 --partition=ecp-p9-2v100"
+
+# Each job must be assigned a stage and the stages can be defined to meet the 
+# project requirements. Many examples are focused on build, test, and deploy.
+stages:
+  - build
+  - test
+
+# 'build-Hello' is this specific job with a name we have defined (could be anything)
+# This specific job will be run in the build stage ('stage: build'), and only
+# after all job's in a stage have been completed will the next stage in the 
+# the pipeline (complete .gitlab-ci.yml) will be run. Please see GitLab's
+# official documentation for more info: https://docs.gitlab.com/ee/ci/pipelines.html
+build-Hello:
+  stage: build
+  # Tags are used to select specific Runners from a list of available runners.
+  # The admin who deploys / registers the runners defines these tags and by
+  # specifying them we can ensure our jobs are deployed on the correct system.
+  # You can identify the details of the runners available to the project by:
+  # Settings > CI/CD > Runners
+  tags: [p9, slurm, nmc]
+  # Script is the only required keyword for jobs, it is the shell scripts
+  # that in the case of the batch runner will be executed within the job
+  # allocation. Anything you are able to do in a job on the target systems
+  # (e.g. sbatch * myScript.bash ) can be included here.
+  script:
+    - ls
+    - make
+  # The 'artifacts' keyword is used to specify a list of files and/or 
+  # directories that should be captures after a successful job. These are then
+  # uploaded to the GitLab server and can be either downloaded manually or
+  # made available to other jobs in the pipeline. In this example we are
+  # capturing a binary that we are building.
+  # Source: https://docs.gitlab.com/ee/ci/yaml/#artifacts
+  artifacts:
+    # We are leveraging a predefined GitLab environment variable to give the 
+    # artifcate (upload to GitLab server) a name.
+    # Source: https://docs.gitlab.com/ee/ci/variables/#predefined-environment-variables
+    name: "Binary-$CI_JOB_NAME"
+    paths:
+      - hello
+
+# The next two jobs ('test-Hello' and 'test-General') are part of the test 
+# stage. They will be submitted to the appropriate runners at the same time
+# however, they don't necessarily run in parallel.
+test-Hello:
+  stage: test
+  # This example uses the same runner for each job; however, it is possible
+  # to utlize different runners for each job through proper usage of tags.
+  tags: [p9, slurm, nmc]
+  script:
+    - ./hello
+  # The `dependencies` are used to define from which job artifacts should be
+  # downloaded from. By default ALL artifacts from previous stages will be 
+  # downloaded. Source: https://docs.gitlab.com/ee/ci/yaml/#dependencies
+  dependencies:
+    - build-Hello
+
+test-General:
+  stage: test
+  tags: [p9, slurm, nmc]
+  # We can influence not just the batch runner but any variables in a number
+  # of different ways. In this example, we are defining job-level varaibles
+  # that will be used as opposed to the project-level (defined at the top).
+  # Source: https://docs.gitlab.com/ee/ci/variables/#priority-of-variables
+  variables:
+    SCHEDULER_PARAMETERS: "--nodes=1 --partition=ecp-p9-2v100 --job-name=test-General-Example"
+  # The scripts below highlight that your jobs are running under your user,
+  # the folder structure will not only contain everything from your project but 
+  # also the hello application we compiled in the build phase. Finally
+  # you will see details of the Slurm environment the job is being executed in.
+  script:
+    - whoami
+    - ls -la
+    - env | grep SLURM

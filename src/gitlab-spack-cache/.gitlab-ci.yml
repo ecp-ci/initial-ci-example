@@ -1,0 +1,114 @@
+################################################################################
+# GitLab CI Caching with Spack
+#
+# Goal: Introduce the basic concepts of GitLab's caching mechanism that can be 
+# utilized to save time during the CI pipelines. In this example we are
+# leveraging Spack to install a package and save all libraries installed in
+# that process to use in future stages.
+# Source: https://docs.gitlab.com/ee/ci/caching/
+################################################################################
+
+stages:
+  - build
+  - test
+  - run
+
+variables:
+  # In this repo we create a Git Submodule, in this case the official Spack
+  # repo ($ git submodule add https://github.com/spack/spack). In order to
+  # fetch this repo during the standard process we must define the
+  # 'GIT_SUBMODULE_STRATEGY'.
+  # Source: https://git-scm.com/book/en/v2/Git-Tools-Submodules
+  GIT_SUBMODULE_STRATEGY: recursive
+  # Similiar to past example we are leveraging the GitLab Batch runner and as
+  # such we will need to provide the job submission parameters.
+  SCHEDULER_PARAMETERS: "--nodes=1 --partition=ecp-p9-2v100"
+
+# GitLab caching mechanism is best used for "temporary storage for project
+# dependencies". In this case we are going to use it to capture portions of
+# a Spack install process that we may need in later stages to build / test our
+# source code.
+# Source: https://docs.gitlab.com/ee/ci/caching/
+cache:
+  # The cache's key should be used to distinguish the cache from other's
+  # created in the CI process. For instance, 'key: ${CI_COMMIT_REF_SLUG}' would
+  # insure that each branch always uses the same cache. In our example it is
+  # named after a specific project-user.
+  #
+  # Security note (TODO: we need to test to verify that even if you know my
+  # "key" you are unable to access my cache)
+  key: "${CI_PROJECT_NAME}-${USER}"
+  # 'paths' is a list of files / folders that will be captures upon completion
+  # of the job step.
+  paths:
+    - spack-install/
+
+before_script:
+  # Ensure that the provided commands are run before any other job script. In
+  # this case we are sourcing the Spack environment from the submodule.
+  - source spack/share/spack/setup-env.sh
+
+# Leverage YAML's anchor functioanlity to duplcate properties when the
+# appropraite alias (<<: *runner) is provided.
+.runner: &runner
+  tags:
+    - slurm
+    - nmc
+    - p9
+
+buildStage:
+  stage: build
+  # Use the runner tags we defined above
+  <<: *runner
+  script:
+    # Demonstrate that we are using the expected version of Spack
+    - which spack
+    - spack --version
+    # We will leverage several custom settings to ensure that the Spack
+    # installation occurs in the expected location. You can see the config.yaml
+    # file found in the '.spack-config' folder in this repository.
+    # Source: https://spack.readthedocs.io/en/latest/configuration.html
+    - spack -C .spack-config config get config
+    - spack -C .spack-config install charliecloud@0.9.6
+  only:
+    # Will ensure that the CI pipeline will 'only' run when initiated via the
+    # the web GUI (CI / CD -> Pipelines -> Run Pipeline).
+    - web
+
+testCache:
+  stage: test
+  <<: *runner
+  script:
+    # Remeber we need to use the same configuration files to insure that Spack
+    # sees the install we cpatured (cache)
+    - spack -C .spack-config find
+    - ls spack-install/gitlab-example/linux-centos7-ppc64le/charliecloud-0.9.6
+    # Prepare for artifact (just for ease of use)
+    - cp -R spack-install/gitlab-example/linux-centos7-ppc64le/charliecloud-0.9.6/bin artifact-bin
+  only:
+    - web
+  # We can also capture artifacts
+  artifacts:
+    paths:
+      - artifact-bin/
+
+runBuild:
+  stage: run
+  <<: *runner
+  script:
+    - hostname
+    - whoami
+    # Note, this is demonstrating that we can also use artifacts. They sever
+    # different purposes and each bring different values.
+    # Source: https://docs.gitlab.com/ee/ci/caching/#cache-vs-artifacts
+    - export PATH=$PWD/artifact-bin:$PATH
+    - ch-run --version
+    - which ch-run
+    # The cache is still available as well!
+    - ls spack-install/gitlab-example/linux-centos7-ppc64le/charliecloud-0.9.6
+  only:
+    - web
+
+# Remember this is only a brief demonstration showing how you could potentially
+# leverage the GitLab cache, in this case levearing Spack.
+

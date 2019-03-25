@@ -1,0 +1,80 @@
+################################################################################
+# GitLab CI Python
+#
+# Goal: Utlize GitLab's caching mechanism is a standard way in order to best
+# support deploying and verifying a Python virtual environment for every job
+# in a pipeline. This will always ensure that the correct dependencies are 
+# available and potentially speed up the CI process.
+# Source: https://docs.gitlab.com/ee/ci/caching/
+################################################################################
+
+
+# GitLab caching mechanism is best used for "temporary storage for project
+# dependencies". In this case we are going to use it to capture portions of
+# a Spack install process that we may need in later stages to build / test our
+# source code.
+# Source: https://docs.gitlab.com/ee/ci/caching/
+cache:
+  # The cache's key should be used to distinguish the cache from other's
+  # created in the CI process. For instance, 'key: ${CI_COMMIT_REF_SLUG}' would
+  # insure that each branch always uses the same cache. In our example it is
+  # named after a specific project-user. The SetUID enhancements coupled with 
+  # Linux kernel (folder ownsership) will enforce permissions.
+  key: "${CI_PROJECT_NAME}-${USER}"
+  # 'paths' is a list of files / folders that will be captures upon completion
+  # of the job step.
+  paths:
+    - env
+
+variables:
+  # Used in conjunction with the Batch executor, verify if this is required
+  # based upon runner's available in your environment.
+  # e.g. -> sbatch --nodes=1 --partition=ecp-p9-4v100 ...
+  SCHEDULER_PARAMETERS: "--nodes=1 --partition=ecp-p9-4v100"
+
+# Leverage YAML's anchor functioanlity to duplcate properties when the
+# appropraite alias (<<: *runner) is provided.
+.runner: &runner
+  tags:
+    - p9
+    - mirage
+    
+stages:
+  - one
+  - two
+
+before_script:
+  - python -m virtualenv env
+  - source env/bin/activate
+  - pip install -r requires.txt
+
+example-one:
+  stage: one
+  # Use the runner tags we defined above
+  <<: *runner
+  script:
+    # You will notice the `termcolor` package has been installed along with
+    # all defaults of the virtual environment.
+    - pip list
+  only:
+    # For pipelines created using Run pipeline button in GitLab UI 
+    # (under your project’s Pipelines)
+    # Source: https://docs.gitlab.com/ee/ci/yaml/#onlyexcept-basic
+    - web
+    
+example-two:
+  stage: two
+  # Use the runner tags we defined above
+  <<: *runner
+  script:
+    # Before executing the script (depedenant on the termcolor packaghe) the
+    # 'before_script' will be run. As long as the same environments as `example-one`
+    # is leveraged the virtual envionrment we defined will be present. If not 
+    # then is should be recreated.
+    - python hello.py
+  only:
+    - web
+    
+# Even though we have defined two stages for the purposes of this demonstration,
+# if we re-run the pipeline targeting the same runners, the cache should have
+# persisted. Note that it is possible to 
