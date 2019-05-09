@@ -22,12 +22,3 @@ get an account on that site's GitLab_ ECP_ CI instance.
    * - OSTI
      - https://ecp.osti.gov
      - `Lance Vowell <vowelll@osti.gov>`_
-
-Additional notes (not really documentation yet ;)
-
-* ORNL
-  * need to get into ecpcitest group to access Ascent runner
-* NERSC
-  * While access to GitLab is up, still working issues for access to actual resources such as "TDS"
-* LLNL?
-

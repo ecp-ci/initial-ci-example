@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>GitLab and GitLab CI &#8212; TrainingCi4Ecp 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Access To ECP CI Systems" href="access.html" />
+    <link rel="prev" title="Welcome to TrainingCi4Ecp Documentation" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="access.html" title="Getting Access To ECP CI Systems"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to TrainingCi4Ecp Documentation"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">TrainingCi4Ecp 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="gitlab-and-gitlab-ci">
+<h1><a class="reference external" href="https://about.gitlab.com">GitLab</a> and <a class="reference external" href="https://about.gitlab.com">GitLab</a> CI<a class="headerlink" href="#gitlab-and-gitlab-ci" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://bssw.io/items/what-is-continuous-integration-testing">What is Continuous Integration (CI) testing?</a></p>
+<p><a class="reference external" href="https://www.exascaleproject.org">ECP</a>&#8216;s CI resources are based upon <a class="reference external" href="https://about.gitlab.com/product/continuous-integration">CI functionality</a>
+of <a class="reference external" href="https://about.gitlab.com">GitLab</a>.</p>
+<p>This section is for people already familiar with <a class="reference external" href="https://github.com">GitHub</a> and <a class="reference external" href="https://github.com">GitHub</a>&#8216;s continuous
+integration services and wanting to know more about <a class="reference external" href="https://about.gitlab.com">GitLab</a> and <a class="reference external" href="https://about.gitlab.com">GitLab</a>&#8216;s continuous
+integration services and what the differences are between the two.</p>
+<p>If your project&#8217;s <em>home</em> is as a <a class="reference external" href="https://github.com">GitHub</a> project...</p>
+<p>To use <a class="reference external" href="https://about.gitlab.com">GitLab</a> CI services, you will need to do several things</p>
+<ul class="simple">
+<li>Import or mirror your project to a <a class="reference external" href="https://about.gitlab.com">GitLab</a> instance<ul>
+<li>Then, configure your project in <a class="reference external" href="https://about.gitlab.com">GitLab</a> to <em>mirror</em> (e.g. stay in sync with its
+<a class="reference external" href="https://github.com">GitHub</a> origin)</li>
+</ul>
+</li>
+<li>Add a <code class="docutils literal"><span class="pre">.gitlab-ci.yml</span></code> file in the root directory of your project</li>
+<li>Configure one or more <em>runners</em></li>
+</ul>
+<p>Within the context of GitLab, the notion of a <a class="reference external" href="https://docs.gitlab.com/runner/">runner</a> is a fundamental
+aspect of the design. A <em>runner</em> is responsible for actually running the jobs that perform CI related
+operations.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to TrainingCi4Ecp Documentation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="access.html"
+                        title="next chapter">Getting Access To ECP CI Systems</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/gitlab_ci.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="access.html" title="Getting Access To ECP CI Systems"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to TrainingCi4Ecp Documentation"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">TrainingCi4Ecp 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/miller86/ideas-ecp/TrainingCi4Ecp/src/calc_pi/calc_pi.cpp
+calc_pi.hpp
+/Users/miller86/ideas-ecp/TrainingCi4Ecp/src/calc_pi/calc_pi.hpp
+
+/Users/miller86/ideas-ecp/TrainingCi4Ecp/src/calc_pi/calc_pi.hpp
+calc_pi_exports.h
+/Users/miller86/ideas-ecp/TrainingCi4Ecp/src/calc_pi/calc_pi_exports.h
+
+/Users/miller86/ideas-ecp/TrainingCi4Ecp/src/calc_pi/calc_pi_exports.h
+

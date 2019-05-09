@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Repository Mirroring &#8212; TrainingCi4Ecp 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="LLNL GitLab" href="llnl_gitlab.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="contributing.html" title="Contributing"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="llnl_gitlab.html" title="LLNL GitLab"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">TrainingCi4Ecp 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="repository-mirroring">
+<h1>Repository Mirroring<a class="headerlink" href="#repository-mirroring" title="Permalink to this headline">¶</a></h1>
+<p>In Git, repository <em>mirroring</em> is the creation of a copy of a repository
+in another Git instance. The <em>mirror</em> (or copy) is intended to just follow
+along with all the work happening in the original repository.</p>
+<div class="section" id="mirroring-via-git-hosting-provider-interface">
+<h2>Mirroring via Git hosting provider interface<a class="headerlink" href="#mirroring-via-git-hosting-provider-interface" title="Permalink to this headline">¶</a></h2>
+<p>Each Git hosting provider (e.g. <a class="reference external" href="https://github.com">GitHub</a>, <a class="reference external" href="https://about.gitlab.com">GitLab</a>, Bitbucket, etc.) may offer
+built-in support for repository mirroring in their hosted repository controls.
+For example, in most <a class="reference external" href="https://about.gitlab.com">GitLab</a> instances, you can find mirroring controls under
+<span class="menuselection">Settings ‣ Repository ‣ Mirroring repositories ‣ Expand</span>
+as shown in the screenshot...</p>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/gitlab_mirror_controls.png"><img alt="_images/gitlab_mirror_controls.png" src="_images/gitlab_mirror_controls.png" style="width: 412.5px; height: 407.5px;" /></a>
+</div>
+<p>However, not all <a class="reference external" href="https://about.gitlab.com">GitLab</a> hosting providers support <strong>both</strong> a <em>push</em> mode and <em>pull</em>
+mode for mirroring. Most provide only a <em>push</em> mode meaning you can set up the
+controls to push code <em>out</em> from the <a class="reference external" href="https://about.gitlab.com">GitLab</a> instance but not pull it <em>in</em>.</p>
+<p>Since access to each <a class="reference external" href="https://www.exascaleproject.org">ECP</a> CI resource is controlled by a local <a class="reference external" href="https://about.gitlab.com">GitLab</a> instance,
+most <a class="reference external" href="https://www.exascaleproject.org">ECP</a> code teams will be looking for a way to mirror their code <em>into</em> those
+instances. Bottom line, you won&#8217;t be able to do it by using the <a class="reference external" href="https://about.gitlab.com">GitLab</a> hosting
+providers built-in mirroring feature. Instead, you will have to handle this manually
+by using a clone as an intermediary. But this is very simple</p>
+</div>
+<div class="section" id="mirror-via-git-clone-as-intermediary">
+<h2>Mirror via Git Clone as Intermediary<a class="headerlink" href="#mirror-via-git-clone-as-intermediary" title="Permalink to this headline">¶</a></h2>
+<p>To achieve the end goal of mirroring an existing repository into an <a class="reference external" href="https://www.exascaleproject.org">ECP</a> CI
+<a class="reference external" href="https://about.gitlab.com">GitLab</a> instance, you would use a Git clone as an intermediary an set up
+the remotes for the clone such that you can <code class="docutils literal"><span class="pre">get</span> <span class="pre">pull</span></code> from the source
+repository and then <code class="docutils literal"><span class="pre">git</span> <span class="pre">push</span></code> to the <a class="reference external" href="https://about.gitlab.com">GitLab</a> repository.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Repository Mirroring</a><ul>
+<li><a class="reference internal" href="#mirroring-via-git-hosting-provider-interface">Mirroring via Git hosting provider interface</a></li>
+<li><a class="reference internal" href="#mirror-via-git-clone-as-intermediary">Mirror via Git Clone as Intermediary</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="llnl_gitlab.html"
+                        title="previous chapter">LLNL GitLab</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="contributing.html"
+                        title="next chapter">Contributing</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/mirroring.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="contributing.html" title="Contributing"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="llnl_gitlab.html" title="LLNL GitLab"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">TrainingCi4Ecp 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.3.
+    </div>
+  </body>
+</html>

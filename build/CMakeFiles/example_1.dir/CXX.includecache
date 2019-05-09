@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/miller86/ideas-ecp/TrainingCi4Ecp/src/calc_pi/example_1.cpp
+iostream
+-
+cstdlib
+-
+math.h
+-
+
